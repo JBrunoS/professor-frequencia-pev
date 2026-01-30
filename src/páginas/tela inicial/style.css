@@ -1,0 +1,25 @@
+.container-tela-inicial {
+    background-color: #f18140;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.container-tela-inicial img{
+    width: 160px;
+    margin-bottom: 30px;
+}
+
+.container-tela-inicial h2{
+    color: #FFFFFF;
+    font-size: 40px;
+}
+
+@media only screen and (max-width: 768px) {
+    .container-tela-inicial h2{
+        font-size: 25px;
+    }
+}
