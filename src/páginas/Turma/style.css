@@ -1,0 +1,105 @@
+@media only screen and (max-width: 768px) {
+    .container-turmas{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        margin: 50px auto 10px;
+    }
+
+    .container-turmas span{
+        margin: 20px;
+        font-size: 22px;
+        align-self: flex-start;
+        text-transform: capitalize;
+    }
+
+    .container-turmas div {
+        width: 90%;
+    }
+
+    .container-turmas .buttons-turmas{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        margin: 10px auto;
+        padding: 5px;
+        
+    }
+
+    .container-turmas .buttons-turmas div{
+        width: 45%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+    }
+
+    .container-turmas .buttons-turmas button{
+        width: 23%;
+        height: 40px;
+        border: none;
+        border-radius: 6px;
+        font-size: 15px;
+        background: #37ed;
+        color: #FFFFFF;
+        box-shadow: 2px 2px 2px rgb(0, 0, 0, 0.5);
+
+    }
+
+    .container-turmas .buttons-turmas button:nth-of-type(1){
+        background-color: #37ed;
+
+    }
+    .container-turmas .buttons-turmas button:nth-of-type(2){
+        background-color: #0DA12E;
+    }
+
+    .container-turmas .buttons-turmas div select{
+        width: 80%;
+        height: 40px;
+        /* margin: 10px auto; */
+        font-size: 15px;
+        border-radius: 0px;
+        border-top-left-radius: 6px;
+        border-bottom-left-radius: 6px;
+        padding-left: 5px;
+        box-shadow: 1px 2px 2px rgb(0, 0, 0, 0.5);
+    }
+
+    .container-turmas .buttons-turmas div button:nth-of-type(1){
+        width: 20%;
+        height: 40px;
+        background-color: #773ed4;
+        border-radius: 0px;
+        border-top-right-radius: 6px;
+        border-bottom-right-radius: 6px;
+    }
+
+    .container-turmas .participantes-turmas{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .container-turmas .participantes-turmas span{
+        font-size: 15px;
+        margin: 5px 0px 5px 20px;
+    }
+
+    .container-turmas .participantes-turmas::before{
+        content: 'Lista dos alunos inscritos na turma';
+        display: inline-block;
+        width: 90%;
+        align-self: flex-start;
+        font-size: 16px;
+        border-bottom: 1px solid #000;
+        margin: 10px 0px;
+        margin-left: 15px;
+
+    }
+}

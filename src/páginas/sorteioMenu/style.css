@@ -1,0 +1,134 @@
+.container-menu-sorteio {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 60px;
+    padding-top: 30px;
+
+}
+
+.container-menu-sorteio button{
+    width: 90%;
+    height: 50px;
+    border-radius: 8px;
+    border: none;
+    background-color: blue;
+    color: #FFF;
+    font-size: 20px;
+}
+
+.container-menu-sorteio .content-sorteio-vendidos {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 10px;
+}
+
+.container-menu-sorteio .content-sorteio-vendidos h2{
+    align-self: flex-start;
+}
+
+.container-menu-sorteio .content-sorteio-vendidos .body-card-pago{
+    background-color: green;
+    color: #FFF;
+}
+
+.container-menu-sorteio .content-sorteio-vendidos div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-top: 10px;
+    padding: 8px;
+    font-size: 16px;
+    background-color: #c4c4c4;
+}
+
+.container-menu-sorteio .content-sorteio-vendidos div div{
+    width: 100%;
+    margin: 0px;
+    padding-inline: 10px;
+    display: flex;
+    flex-direction: row;
+    background: transparent;
+}
+.container-menu-sorteio .content-sorteio-vendidos div div:last-of-type{
+    width: 50%;
+    margin: 0px;
+    padding-inline: 10px;
+    display: flex;
+    flex-direction: row;
+    align-self: flex-end;
+}
+
+.container-menu-sorteio .modal {
+    position: absolute;
+    top: 80px;
+    width: 90%;
+    height: auto;
+    padding: 20px 0px;
+    background-color: #FFF;
+    border: 10px solid #5a5a5a;
+    border-radius: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.container-menu-sorteio .modal-hidden {
+    display: none;
+}
+
+.container-menu-sorteio .modal div {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.container-menu-sorteio .modal span {
+    align-self: flex-start;
+}
+
+.container-menu-sorteio .modal div input, select {
+    padding-left: 10px;
+    width: 90%;
+}
+
+.container-menu-sorteio .modal div div{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin: 15px auto;
+}
+
+.container-menu-sorteio .modal div div button {
+    width: 45%;
+}
+
+.container-menu-sorteio .modal div div button:first-of-type {
+    background-color: #c1c1c1;
+    color: #000;
+}
+
+.container-menu-sorteio .modal .excluir {
+    width: 100%;
+    height: auto;
+    padding: 10px;
+    background-color: #c1c1c1;
+    border: 1px solid #5a5a5a;
+    border-radius: 9px;
+    margin: 5px 0px;
+    align-self: flex-start;
+}
