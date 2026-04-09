@@ -1,36 +1,25 @@
 // components/BotaoBaixarPDF.jsx
 import React, { useState } from 'react';
 
-import { gerarPDFSolicitacao } from '../utils/gerarPDFSolicitacao';
 import api from '../services/api';
 
 export default function BotaoBaixarPDF({ solicitacaoId }) {
   const [loading, setLoading] = useState(false);
 
-  const handleBaixarPDF = async () => {
-    setLoading(true);
-    try {
-      const response = await api.get(`/solicitacoes/${solicitacaoId}/completa`);
-      
-      if (!response.data.success) {
-        alert('Erro ao buscar dados da solicitação');
-        return;
-      }
-      console.log(response.data)
+  const handlePDF = () => {
+    setLoading(true)
+    const id_projeto = localStorage.getItem("id_projeto");
 
-      gerarPDFSolicitacao(response.data.data);
-      
-    } catch (error) {
-      console.error('Erro ao gerar PDF:', error);
-      alert('Erro ao gerar PDF. Tente novamente.');
-    } finally {
-      setLoading(false);
-    }
+    const url = `${api.defaults.baseURL}/solicitacoes/${solicitacaoId}/pdf?id_projeto=${id_projeto}`;
+
+    // 🔥 abre PDF (funciona no WebView)
+    window.open(url, "_blank");
+    setLoading(false)
   };
 
   return (
     <button
-      onClick={handleBaixarPDF}
+      onClick={handlePDF}
       disabled={loading}
       className="btn-baixar-pdf"
       style={{
@@ -45,7 +34,7 @@ export default function BotaoBaixarPDF({ solicitacaoId }) {
         display: 'flex',
         alignItems: 'center',
         gap: '8px',
-        opacity: loading ? 0.6 : 1
+        opacity: loading ? 0.6 : 1,
       }}
     >
       {loading ? (
@@ -56,7 +45,7 @@ export default function BotaoBaixarPDF({ solicitacaoId }) {
       ) : (
         <>
           <span>⬇</span>
-          <span>Baixar PDF</span>
+          <span>Abrir PDF</span>
         </>
       )}
     </button>

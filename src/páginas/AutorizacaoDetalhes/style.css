@@ -4,7 +4,7 @@
         width: 100%;
         min-height: 100vh;
         margin-top: 70px;
-        padding: 16px;
+        padding: 16px 16px 65px;
         display: flex;
         flex-direction: column;
         gap: 16px;
@@ -91,7 +91,8 @@
         width: 100%;
         align-items: center;
         justify-content: space-between;
-        /* background-color: #2e7d32; */
+        /* margin-bottom: 20px;
+        background-color: #2e7d32; */
     }
 
     .acoes button {

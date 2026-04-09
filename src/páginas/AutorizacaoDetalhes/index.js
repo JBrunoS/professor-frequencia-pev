@@ -29,7 +29,6 @@ export default function DetalheSolicitacao() {
         setSolicitacao(res.data.solicitacao);
         setItens(res.data.itens);
         setTimeline(res.data.timeline);
-        console.log(res.data.timeline);
       } catch (err) {
         console.error(err);
       }
@@ -125,7 +124,19 @@ export default function DetalheSolicitacao() {
           {renderStatus(solicitacao.status)}
 
           <span>
+            <strong>Solicitação:</strong> {solicitacao.titulo}
+          </span>
+          <span>
+            <strong>Descrição:</strong> {solicitacao.descricao}
+          </span>
+          <span>
             <strong>Atividade:</strong> {solicitacao.atividade_nome}
+          </span>
+          <span>
+            <strong>Área:</strong> {String(solicitacao.atividade_area).toLocaleUpperCase()}
+          </span>
+          <span>
+            <strong>Custo: R$</strong> {Number(solicitacao.atividade_custo).toFixed(2)}
           </span>
           <span>
             <strong>Local de compra:</strong> {solicitacao.local_compra}
@@ -134,8 +145,6 @@ export default function DetalheSolicitacao() {
             <strong>Prazo:</strong>{" "}
             {new Date(solicitacao.data_prazo).toLocaleDateString()}
           </span>
-
-          <p>{solicitacao.descricao}</p>
         </div>
 
         {/* ITENS */}
