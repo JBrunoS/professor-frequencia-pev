@@ -209,4 +209,15 @@
         font-size: 12px;
         color: #888;
     }
+
+    .accordion-content {
+        margin-left: 15px;
+        border-left: 2px solid #ddd;
+        padding-left: 10px;
+    }
+
+    .card-autorizacao.child {
+        background: #f9f9f9;
+        margin-top: 5px;
+    }
 }

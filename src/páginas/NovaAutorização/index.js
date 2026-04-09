@@ -12,6 +12,8 @@ export default function CriarSolicitacao() {
   const id_user = localStorage.getItem("id_professor");
   const criado_por_role = localStorage.getItem("funcao_professor");
   const nome_professor = localStorage.getItem("nome_professor");
+  const year = new Date().getFullYear();
+  const month = new Date().getMonth() + 1;
 
   const [titulo, setTitulo] = useState("");
   const [descricao, setDescricao] = useState("");
@@ -19,6 +21,7 @@ export default function CriarSolicitacao() {
   const [atividades, setAtividades] = useState([]);
   const [dataPrazo, setDataPrazo] = useState("");
   const [localCompra, setLocalCompra] = useState("");
+  const [custo, setCusto] = useState(0);
 
   // 👉 ITEM EM EDIÇÃO
   const [itemAtual, setItemAtual] = useState({
@@ -33,14 +36,32 @@ export default function CriarSolicitacao() {
 
   // 🔧 MOCK ATIVIDADES
   useEffect(() => {
-    console.log(id_user);
-    console.log(id_projeto);
-    setAtividades([
-      { id: 1, nome: "Oficina de Música" },
-      { id: 2, nome: "Evento Cultural" },
-      { id: 3, nome: "Projeto Pedagógico" },
-    ]);
+    buscarAtividades();
   }, []);
+
+  async function buscarAtividades() {
+    try {
+      if (!id_projeto || !year) return;
+
+      const res = await api.get(`/atividades/${id_projeto}/${year}`);
+
+      const atividades = res.data;
+
+      // filtrar atividades
+      const atividadesFiltradas = atividades.filter((item) => {
+        const mesItem = Number(item.mes_realizacao);
+
+        return (
+          mesItem === month &&
+          (item.status === "pendente" || item.status === "em_andamento")
+        );
+      });
+
+      setAtividades(atividadesFiltradas);
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   function handleItemAtualChange(field, value) {
     const novoItem = { ...itemAtual, [field]: value };
@@ -115,6 +136,21 @@ export default function CriarSolicitacao() {
     }
   }
 
+  function handleSelectAtividade(e) {
+    const id = e.target.value;
+    setAtividadeId(id);
+
+    const atividadeSelecionada = atividades.find(
+      (item) => item.id === Number(id),
+    );
+
+    if (atividadeSelecionada) {
+      setCusto(atividadeSelecionada.custo);
+      // ou atualizar um objeto form completo
+      // setForm(atividadeSelecionada);
+    }
+  }
+
   return (
     <>
       <Menu />
@@ -128,7 +164,7 @@ export default function CriarSolicitacao() {
             <label>Atividade</label>
             <select
               value={atividadeId}
-              onChange={(e) => setAtividadeId(e.target.value)}
+              onChange={handleSelectAtividade}
               required
             >
               <option value="">Selecione uma atividade</option>
@@ -241,8 +277,18 @@ export default function CriarSolicitacao() {
 
           {/* ===== TOTAL ===== */}
           <div className="card total-card">
-            <strong>Valor Total:</strong>
-            <span>R$ {valorTotal.toFixed(2)}</span>
+            <div>
+              <strong>Valor Total: </strong>
+              <span>R$ {valorTotal.toFixed(2)}</span>
+            </div>
+            <div>
+              <strong>Custo Total da Atividade: </strong>
+              <span>R$ {custo.toFixed(2)}</span>
+            </div>
+            <div>
+              <strong>Valor Restante da Atividade: </strong>
+              <span>R$ {(custo - valorTotal).toFixed(2)}</span>
+            </div>
           </div>
 
           <button type="submit" className="btn-submit">
