@@ -27,6 +27,7 @@ export default function Login() {
       localStorage.setItem("id_projeto", response.data[0].id_projeto);
       localStorage.setItem("nome_professor", response.data[0].nome);
       localStorage.setItem("funcao_professor", response.data[0].funcao);
+      localStorage.setItem("image_url", response.data[0].image_url);
 
       alert(`Seja bem-vindo "${response.data[0].nome}"`);
       navigate("/");

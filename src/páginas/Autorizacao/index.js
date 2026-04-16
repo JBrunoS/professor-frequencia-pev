@@ -211,28 +211,28 @@ export default function Autorizacao() {
             onClick={() => setTab("solicitacoes")}
             className={tab === "solicitacoes" ? "active" : ""}
           >
-            Solicitações ({contadores.solicitacoes})
+            Solicit. ({contadores.solicitacoes})
           </button>
 
           <button
             onClick={() => setTab("comite")}
             className={tab === "comite" ? "active" : ""}
           >
-            Comitê Financ. ({contadores.comite})
+            Comitê ({contadores.comite})
           </button>
 
           <button
             onClick={() => setTab("financeiro")}
             className={tab === "financeiro" ? "active" : ""}
           >
-            Dept. Financeiro ({contadores.financeiro})
+            Financ. ({contadores.financeiro})
           </button>
 
           <button
             onClick={() => setTab("presidencia")}
             className={tab === "presidencia" ? "active" : ""}
           >
-            Presidência ({contadores.presidencia})
+            Presid. ({contadores.presidencia})
           </button>
         </div>
 

@@ -41,33 +41,42 @@ export default function Home() {
     <>
       <Menu />
       <div className="container-home">
-        <span>Seja Bem-vindo, {nome_professor}</span>
+        <span className="welcome-text">
+          Seja Bem-vindo, {nome_professor}
+        </span>
 
-        {isAdmin(funcao_professor) && (
-          <div onClick={handleAutorizacao}>
-            <span>Autorizações</span>
-            <FiLock size={18} color="#f18140" />
+        <div className="menu-grid">
+          {isAdmin(funcao_professor) && (
+            <div onClick={handleAutorizacao}>
+              <span>Autorizações</span>
+              <FiLock size={18} color="#f18140" />
+            </div>
+          )}
+
+          <div onClick={handleTurmas}>
+            <span>Frequência</span>
+            <FiCalendar size={18} color="#f18140" />
           </div>
-        )}
-        <div onClick={() => handleTurmas()}>
-          <span>Frequência</span>
-          <FiCalendar size={18} color="#f18140" />
-        </div>
-        <div onClick={() => handleEstoque()}>
-          <span>Registro de Consumo</span>
-          <FiShoppingCart size={18} color="#f18140" />
-        </div>
-        <div onClick={() => handleParticipantes()}>
-          <span>Participantes</span>
-          <FiUsers size={18} color="#f18140" />
-        </div>
-        <div onClick={() => handleSorteio()}>
-          <span>Sorteio</span>
-          <FiPackage size={18} color="#f18140" />
-        </div>
-        <div onClick={() => handlePapagaios()}>
-          <span>Loja Papagaio</span>
-          <FiDollarSign size={18} color="#f18140" />
+
+          <div onClick={handleEstoque}>
+            <span>Registro de Consumo</span>
+            <FiShoppingCart size={18} color="#f18140" />
+          </div>
+
+          <div onClick={handleParticipantes}>
+            <span>Participantes</span>
+            <FiUsers size={18} color="#f18140" />
+          </div>
+
+          <div onClick={handleSorteio}>
+            <span>Sorteio</span>
+            <FiPackage size={18} color="#f18140" />
+          </div>
+
+          <div onClick={handlePapagaios}>
+            <span>Loja Papagaio</span>
+            <FiDollarSign size={18} color="#f18140" />
+          </div>
         </div>
       </div>
     </>

@@ -102,27 +102,35 @@
 
     .tabs-autorizacao {
         display: flex;
-        /* overflow-x: auto; */
         margin-bottom: 12px;
         width: 100%;
         border-bottom: 2px solid #c29175;
-        align-items: center;
-        justify-content: space-between;
+        gap: 6px;
     }
 
     .tabs-autorizacao button {
-        width: 24.5%;
-        padding: 8px 8px;
+        flex: 1;
+        min-height: 35px;
+        padding: 8px 6px;
         border: none;
         border-top-left-radius: 6px;
         border-top-right-radius: 6px;
         background: #f8ceb6;
+
         display: flex;
-        flex-direction: column;
         align-items: center;
         justify-content: center;
-        font-size: 13px;
-        box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+
+        font-size: 11px;
+        font-weight: 600;
+        text-align: center;
+
+        white-space: nowrap;
+        /* não quebra linha */
+        overflow: hidden;
+        /* esconde excesso */
+        text-overflow: ellipsis;
+        /* coloca ... */
     }
 
     .tabs-autorizacao button.active {

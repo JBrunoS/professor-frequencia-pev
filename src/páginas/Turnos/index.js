@@ -49,7 +49,7 @@ export default function Turnos() {
             <div className="container-turnos">
                 <div className='back' onClick={() => handleBack()}>
                     <FiArrowLeft size={30} color='#000' />
-                    <spna>Voltar</spna>
+                    <span>Voltar</span>
                 </div>
 
                 <span>{nome_turma}</span>

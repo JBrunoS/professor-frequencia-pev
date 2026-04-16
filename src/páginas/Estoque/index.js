@@ -187,7 +187,7 @@ export default function Estoque() {
             <div className='container-estoque'>
                 <div className='back' onClick={() => handleBack()}>
                     <FiArrowLeft size={30} color='#000' />
-                    <spna>Voltar</spna>
+                    <span>Voltar</span>
                 </div>
                 <span>Saída de Estoque</span>
                 <input type='date' value={date} onChange={e => setDate(e.target.value)} />

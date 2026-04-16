@@ -106,7 +106,7 @@ export default function Turma() {
             <div className="container-turmas">
                 <div className='back' onClick={() => handleBack()}>
                     <FiArrowLeft size={30} color='#000' />
-                    <spna>Voltar</spna>
+                    <span>Voltar</span>
                 </div>
                 <span>{nome_turma + ' - ' + turno_turma}</span>
 

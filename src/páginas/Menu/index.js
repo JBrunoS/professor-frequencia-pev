@@ -7,11 +7,12 @@ import {
   FiLogOut,
   FiClipboard,
   FiHome,
+  FiEdit2,
 } from "react-icons/fi";
 import { useNavigate, useLocation } from "react-router-dom";
 
 import "./style.css";
-import Logo from "../../assets/logo-pev.png";
+import user_image from "../../assets/user_image.png";
 import { isAdmin } from "../../utils/roles";
 
 export default function Menu() {
@@ -20,6 +21,7 @@ export default function Menu() {
   const location = useLocation();
 
   const funcao_professor = localStorage.getItem("funcao_professor") || "";
+  const image_url = localStorage.getItem("image_url");
 
   function toggleMenu() {
     setOpen((prev) => !prev);
@@ -61,8 +63,14 @@ export default function Menu() {
         <span>PEV - Educacional</span>
       </div>
 
-      <div>
-        <img src={Logo} alt="Projeto Ensinando a Viver" />
+      <div className="foto-editavel">
+        <img
+          src={image_url === null ? user_image : image_url}
+          alt="Perfil de usuário"
+        />
+        {/* <button className="icone-editar">
+          <FiEdit2 size={14} />
+        </button> */}
       </div>
 
       <div className={open ? "suspenso-menu-off" : "suspenso-menu"}>
