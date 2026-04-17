@@ -132,8 +132,6 @@ export default function Frequencia() {
 
                     setEstado(false)
 
-
-
                     setObjetivo('')
                     setDescricao('')
                     frequencia.length = 0
