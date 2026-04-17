@@ -3,7 +3,7 @@
     .container-autorizacao {
         width: 100%;
         min-height: 100vh;
-        margin-top: 70px;
+        /* margin-top: 80px; */
         padding: 16px;
         display: flex;
         flex-direction: column;

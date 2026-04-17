@@ -5,6 +5,7 @@ import api from "../../services/api";
 
 import Menu from "../Menu";
 import "./style.css";
+import BackButton from "../../components/backButton";
 
 export default function CriarSolicitacao() {
   const navigate = useNavigate();
@@ -156,6 +157,7 @@ export default function CriarSolicitacao() {
       <Menu />
 
       <div className="container-autorizacao">
+        <BackButton to="/autorizacao" label="Voltar para Autorizações" />
         <h2>Criar Solicitação</h2>
 
         <form onSubmit={handleSubmit}>

@@ -5,6 +5,7 @@ import { FiArrowLeft, FiBook, FiDatabase, FiDollarSign, FiSearch } from 'react-i
 import './style.css'
 import Menu from '../Menu'
 import api from '../../services/api'
+import BackButton from "../../components/backButton";
 
 export default function Turma() {
     const nome_turma = localStorage.getItem('nome_turma')
@@ -104,10 +105,7 @@ export default function Turma() {
         <>
             <Menu />
             <div className="container-turmas">
-                <div className='back' onClick={() => handleBack()}>
-                    <FiArrowLeft size={30} color='#000' />
-                    <span>Voltar</span>
-                </div>
+                <BackButton to="/turnos" label="Voltar para Turnos" />
                 <span>{nome_turma + ' - ' + turno_turma}</span>
 
                 <div className="buttons-turmas">

@@ -6,6 +6,7 @@ import Menu from "../Menu";
 import api from "../../services/api";
 import "./style.css";
 import BotaoBaixarPDF from "../../components/BotaoBaixarPDF";
+import BackButton from "../../components/backButton";
 
 export default function DetalheSolicitacao() {
   const { id } = useParams();
@@ -110,11 +111,12 @@ export default function DetalheSolicitacao() {
       <Menu />
 
       <div className="container-autorizacao">
+        <BackButton />
         {/* HEADER */}
         <div className="header-detalhe">
-          <button onClick={() => navigate(-1)}>
+          {/* <button onClick={() => navigate(-1)}>
             <FiArrowLeft size={25} />
-          </button>
+          </button> */}
           <h2>Detalhes da Solicitação</h2>
         </div>
 

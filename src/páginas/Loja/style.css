@@ -6,14 +6,14 @@
         flex-direction: column;
         align-items: flex-start;
         justify-content: center;
-        margin: 70px auto 10px;
+        margin: 80px auto 10px;
         padding: 0px 20px;
     }
 
     .container-loja span{
         align-self: flex-start;
         text-transform: capitalize;
-        font-size: 22px;
+        font-size: 18px;
         color: var(--font-label);
         margin: 20px 0px;
     }
@@ -23,9 +23,9 @@
         margin-bottom: 20px;
     }
 
-    .container-loja input{
-        width: 110%;
-        padding-left: 2px;
+    .container-loja .valor-loja{
+        width: 100%;
+        /* background: #773ed4; */
     }
 
     
@@ -36,11 +36,13 @@
         margin: 30px auto 30px;
         border: none;
         background-color: #773ed4;
-        font-size: 20px;
+        font-size: 16px;
+        border-radius: 8px;
         color: #FFFFFF;
         display: flex;
         align-items: center;
         justify-content: center;
+        gap: 3px;
         
     }
 

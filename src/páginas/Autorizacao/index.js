@@ -5,6 +5,7 @@ import { FiClock, FiCheckCircle, FiXCircle, FiPlus } from "react-icons/fi";
 import api from "../../services/api";
 import Menu from "../Menu";
 import "./style.css";
+import BackButton from "../../components/backButton";
 
 const STATUS = {
   AGUARDANDO_COMITE: "AGUARDANDO_COMITE",
@@ -81,6 +82,8 @@ export default function Autorizacao() {
         params: { id_projeto },
       });
 
+      console.log(response.data)
+
       setAtividades(response.data);
     } catch (error) {
       console.error(error);
@@ -138,13 +141,13 @@ export default function Autorizacao() {
   const atividadesFiltradas =
     tab === "solicitacoes"
       ? atividades.filter((a) => {
-          if (!periodoSelecionado) return true;
+        if (!periodoSelecionado) return true;
 
-          return (
-            a.mes_realizacao === periodoSelecionado.mes &&
-            a.ano_realizacao === periodoSelecionado.ano
-          );
-        })
+        return (
+          a.mes_realizacao === periodoSelecionado.mes &&
+          a.ano_realizacao === periodoSelecionado.ano
+        );
+      })
       : atividades;
 
   // CONTADORES
@@ -191,6 +194,7 @@ export default function Autorizacao() {
       <Menu />
 
       <div className="container-autorizacao">
+        <BackButton to="/" label="Voltar para Home" />
         <div className="header-autorizacao">
           <h2>Autorizações</h2>
 

@@ -7,6 +7,7 @@ import './style.css'
 
 import Menu from '../Menu'
 import api from '../../services/api'
+import BackButton from '../../components/backButton'
 
 export default function Estoque() {
     // const [incidents, setIncidents] = useState([])
@@ -185,10 +186,7 @@ export default function Estoque() {
         <>
             <Menu />
             <div className='container-estoque'>
-                <div className='back' onClick={() => handleBack()}>
-                    <FiArrowLeft size={30} color='#000' />
-                    <span>Voltar</span>
-                </div>
+                <BackButton />
                 <span>Saída de Estoque</span>
                 <input type='date' value={date} onChange={e => setDate(e.target.value)} />
                 <select
@@ -205,7 +203,7 @@ export default function Estoque() {
                     <option value='Para família'>Para família</option>
                     <option value='Outros'>Outros</option>
                 </select>
-                {id_projeto == 1 ?
+                {id_projeto === 1 ?
                     <select
                         value={trabalho}
                         onChange={e => setTrabalho(e.target.value)}

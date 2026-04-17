@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import './style.css'
 import Menu from '../Menu'
 import api from '../../services/api'
+import BackButton from '../../components/backButton'
 
 
 export default function HistoricoFrequencia() {
@@ -72,14 +73,14 @@ export default function HistoricoFrequencia() {
         <>
             <Menu />
             <div className='container-historico'>
-                <FiArrowLeft onClick={() => handleBack()} size={30} color='#000000' />
+                <BackButton to="/turma" label="Voltar para Turma" />
                 <span>{nome_turma} - {turno_turma}</span>
                 <h3>{meses[mes_turma].mes}</h3>
 
                 {incidents.map((incidents, index) => (
                     <div key={index} onClick={() => handleHistorico(incidents.dia)} className='box-historico'>
                         <span>{incidents.dia}/{incidents.mes}/{incidents.ano}</span>
-                        <FiArrowRight size={30} color='#FFFFFF' />
+                        <FiArrowRight size={20} />
                     </div>
                 ))}
             </div>

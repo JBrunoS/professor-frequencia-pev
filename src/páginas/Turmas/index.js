@@ -6,13 +6,14 @@ import './style.css'
 
 import Menu from '../Menu'
 import api from '../../services/api'
+import BackButton from '../../components/backButton'
 
 export default function Turmas() {
     const [incidents, setIncidents] = useState([])
     const navigate = useNavigate()
     const id_projeto = localStorage.getItem('id_projeto')
     const id_professor = localStorage.getItem('id_professor')
-    const nome_professor = localStorage.getItem('nome_professor')
+    // const nome_professor = localStorage.getItem('nome_professor')
 
     useEffect(() => {
         handleIncidents()
@@ -39,18 +40,11 @@ export default function Turmas() {
         localStorage.setItem('nome_turma', nome_turma)
 
     }
-
-    function handleBack() {
-        navigate('/')
-    }
     return (
         <>
             <Menu />
             <div className='container-turmas'>
-                <div className='back' onClick={() => handleBack()}>
-                    <FiArrowLeft size={30} color='#000' />
-                    <span>Voltar</span>
-                </div>
+                <BackButton to="/" label="Voltar para Home" />
 
                 <span>Turmas</span>
 
@@ -65,7 +59,7 @@ export default function Turmas() {
                             </div>
                         </div>
                         <div className='icon-turma'>
-                            <FiArrowRightCircle size={35} color='#f18140' />
+                            <FiArrowRightCircle size={25} color='#f18140' />
                         </div>
                     </div>
                 ))}

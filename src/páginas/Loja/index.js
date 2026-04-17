@@ -8,6 +8,7 @@ import Menu from '../Menu'
 import api from '../../services/api'
 
 import './style.css'
+import BackButton from '../../components/backButton';
 
 export default function Papagaios() {
     const id_projeto = localStorage.getItem('id_projeto')
@@ -80,7 +81,7 @@ export default function Papagaios() {
 
     async function handleSalvar() {
 
-        if(valor == '' || nome == ''){
+        if(valor === '' || nome === ''){
             alert("Preecher os campos acima para continuar.")
             return
         }
@@ -124,7 +125,7 @@ export default function Papagaios() {
                     <FiLoader size={50} color='#f19864' />Aguarde...
                 </div>
                 
-                <FiArrowLeft onClick={() => handleBack()} size={30} color='#000000' />
+                <BackButton />
                 
                 <span>Loja do PEV</span>
 
@@ -148,13 +149,13 @@ export default function Papagaios() {
                 />
                 <span> {frequencia.length ? "Saldo Papagaios: " + frequencia[0].saldo : ''}</span>
 
-                <div>
+                <div className='valor-loja'>
                     <label>Valor Gasto</label>
                     <input type='number' value={valor} onChange={e => setValor(parseInt(e.target.value))} />
                 </div>
 
 
-                <button className='descontar' type='button' onClick={() => handleSalvar()}>Descontar <FiDollarSign size={30} color='#FFF' /></button>
+                <button className='descontar' type='button' onClick={() => handleSalvar()}>Descontar <FiDollarSign size={20} color='#FFF' /></button>
             </div>
         </>
     )

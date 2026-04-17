@@ -58,14 +58,14 @@ export default function Home() {
             <FiCalendar size={18} color="#f18140" />
           </div>
 
-          <div onClick={handleEstoque}>
-            <span>Registro de Consumo</span>
-            <FiShoppingCart size={18} color="#f18140" />
-          </div>
-
           <div onClick={handleParticipantes}>
             <span>Participantes</span>
             <FiUsers size={18} color="#f18140" />
+          </div>
+          
+          <div onClick={handleEstoque}>
+            <span>Registro de Consumo</span>
+            <FiShoppingCart size={18} color="#f18140" />
           </div>
 
           <div onClick={handleSorteio}>

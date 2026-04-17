@@ -6,6 +6,7 @@ import Menu from '../Menu'
 
 import './style.css'
 import api from '../../services/api'
+import BackButton from '../../components/backButton'
 
 export default function HistoricoFrequenciaDetalhes() {
     const [incidentsPresentes, setIncidentsPresentes] = useState([])
@@ -50,8 +51,9 @@ export default function HistoricoFrequenciaDetalhes() {
     return (
         <>
             <Menu />
+            
             <div className='container-historico-frequencia'>
-                <FiArrowLeft onClick={() => handleBack()} size={30} color='#000000' />
+                {/* <BackButton to="/historico" label="Voltar para Histórico" /> */}
                 <span>{nome_turma} - {turno_turma}</span>
                 <span>{dia_turma}/{mes_turma}/{ano_turma}</span>
 
@@ -73,7 +75,7 @@ export default function HistoricoFrequenciaDetalhes() {
                     </div>
                 )))}
 
-                <button onClick={() => handleBack()}>Voltar</button>
+                <button className='button' onClick={() => handleBack()}>Voltar</button>
             </div>
         </>
     )

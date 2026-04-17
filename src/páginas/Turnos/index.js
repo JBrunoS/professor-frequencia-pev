@@ -6,6 +6,7 @@ import './style.css'
 
 import Menu from '../Menu'
 import api from "../../services/api";
+import BackButton from "../../components/backButton";
 
 export default function Turnos() {
     const navigate = useNavigate()
@@ -47,10 +48,7 @@ export default function Turnos() {
         <>
             <Menu />
             <div className="container-turnos">
-                <div className='back' onClick={() => handleBack()}>
-                    <FiArrowLeft size={30} color='#000' />
-                    <span>Voltar</span>
-                </div>
+                <BackButton to="/turmas" label="Voltar para Turmas" />
 
                 <span>{nome_turma}</span>
 
@@ -64,7 +62,7 @@ export default function Turnos() {
                         </div>
                     </div>
                     <div className='icon-turnos'>
-                        <FiArrowRightCircle size={30} color='#f18140' />
+                        <FiArrowRightCircle size={25} color='#f18140' />
                     </div>
                 </div>
                 <div onClick={() => handleTurno('tarde')} className='box-turnos'>
@@ -77,7 +75,7 @@ export default function Turnos() {
                         </div>
                     </div>
                     <div className='icon-turnos'>
-                        <FiArrowRightCircle size={30} color='#f18140' />
+                        <FiArrowRightCircle size={25} color='#f18140' />
                     </div>
                 </div>
             </div>

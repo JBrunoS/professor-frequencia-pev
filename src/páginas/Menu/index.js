@@ -8,6 +8,8 @@ import {
   FiClipboard,
   FiHome,
   FiEdit2,
+  FiLock,
+  FiDollarSign,
 } from "react-icons/fi";
 import { useNavigate, useLocation } from "react-router-dom";
 
@@ -52,11 +54,7 @@ export default function Menu() {
   return (
     <div className="container-menu">
       <div onClick={toggleMenu}>
-        {open ? (
-          <FiMenu size={30} color="#FFFFFF" />
-        ) : (
-          <FiX size={30} color="#FFFFFF" />
-        )}
+        <FiMenu size={30} color="#FFFFFF" />
       </div>
 
       <div>
@@ -72,14 +70,36 @@ export default function Menu() {
           <FiEdit2 size={14} />
         </button> */}
       </div>
-
+      {!open && <div className="overlay" onClick={toggleMenu} />}
       <div className={open ? "suspenso-menu-off" : "suspenso-menu"}>
+        <span onClick={toggleMenu} className="menu-item">
+          <FiX size={30} color="#FFFFFF" />
+          Fechar
+        </span>
         <span
           className={isActive("/") ? "menu-item active" : "menu-item"}
           onClick={() => goTo("/")}
         >
           <FiHome size={20} />
           Home
+        </span>
+        {isAdmin(funcao_professor) && (
+
+          <span
+            className={isActive("/autorizacao") ? "menu-item active" : "menu-item"}
+            onClick={() => goTo("/autorizacao")}
+          >
+            <FiLock size={20} />
+            Autorizações
+          </span>
+        )}
+
+        <span
+          className={isActive("/turmas") ? "menu-item active" : "menu-item"}
+          onClick={() => goTo("/turmas")}
+        >
+          <FiUsers size={20} />
+          Frequência
         </span>
 
         <span
@@ -90,28 +110,32 @@ export default function Menu() {
           Participantes
         </span>
 
+
         <span
-          className={isActive("/turmas") ? "menu-item active" : "menu-item"}
-          onClick={() => goTo("/turmas")}
+          className={isActive("/estoque") ? "menu-item active" : "menu-item"}
+          onClick={() => goTo("/estoque")}
         >
-          <FiUsers size={20} />
-          Frequência
+          <FiClipboard size={20} />
+          Registro de Consumo
         </span>
 
-        {isAdmin(funcao_professor) && (
-          <span
-            className={isActive("/estoque") ? "menu-item active" : "menu-item"}
-            onClick={() => goTo("/estoque")}
-          >
-            <FiClipboard size={20} />
-            Estoque
+        <span
+          className={isActive("/loja") ? "menu-item active" : "menu-item"}
+          onClick={() => goTo("/loja")}
+        >
+          <FiDollarSign size={20} />
+          Loja Papagaio
+        </span>
+        <div className="section-profile">
+          <span className="menu-item logout" onClick={() => alert('Funcionalidade em desenvolvimento')}>
+            <FiEdit2 size={20} />
+            Alterar senha
           </span>
-        )}
-
-        <span className="menu-item logout" onClick={handleSair}>
-          <FiLogOut size={20} />
-          Sair
-        </span>
+          <span className="menu-item logout" onClick={handleSair}>
+            <FiLogOut size={20} />
+            Sair
+          </span>
+        </div>
       </div>
     </div>
   );
