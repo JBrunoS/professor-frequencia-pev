@@ -8,6 +8,7 @@ import './style.css'
 import Menu from '../Menu'
 import api from '../../services/api'
 import BackButton from '../../components/backButton'
+import { toast } from 'react-toastify'
 
 export default function Estoque() {
     // const [incidents, setIncidents] = useState([])
@@ -103,7 +104,7 @@ export default function Estoque() {
         let data = parseInt(document.getElementById(id).innerText)
 
         if (data > 0 && data === qtd) {
-            alert('Quantidade máxima atingida.')
+            toast.error('Quantidade máxima atingida.')
             return
         }
 
@@ -111,7 +112,7 @@ export default function Estoque() {
             data = data + 1
             document.getElementById(id).innerText = data
         } else {
-            alert('Estoque zerado, não é possível dar baixa')
+            toast.error('Estoque zerado, não é possível dar baixa')
             return
         }
     }
@@ -133,7 +134,7 @@ export default function Estoque() {
         const quantidade = parseInt(qtd.innerText)
 
         if (date.slice(0, 4) > ano || date.slice(5, 7) > mes) {
-            alert('Data não pode ser maior que a atual')
+            toast.info('Data não pode ser maior que a atual')
             return
         }
 
@@ -146,13 +147,13 @@ export default function Estoque() {
             try {
                 await api.post(`baixa-estoque/${3}`, body)
                     .then(res => {
-                        alert(res.data)
+                        toast.success(res.data)
                         handleEstoque()
                         document.getElementById(id).innerText = '0'
                     })
                 await api.post(`create-report/${3}`, body1)
                     .then(res => {
-                        alert(res.data)
+                        toast.success(res.data)
                     })
             } catch (error) {
                 console.log(error)
@@ -164,23 +165,19 @@ export default function Estoque() {
         try {
             await api.post(`baixa-estoque/${id_projeto}`, body)
                 .then(res => {
-                    alert(res.data)
+                    toast.success(res.data)
                     handleEstoque()
                     document.getElementById(id).innerText = '0'
                 })
             await api.post(`create-report/${id_projeto}`, body1)
                 .then(res => {
-                    alert(res.data)
+                    toast.success(res.data)
                 })
         } catch (error) {
             console.log(error)
         }
 
     }
-    function handleBack() {
-        navigate('/')
-    }
-
 
     return (
         <>

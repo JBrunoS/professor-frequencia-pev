@@ -6,6 +6,7 @@ import api from "../../services/api";
 import Menu from "../Menu";
 import "./style.css";
 import BackButton from "../../components/backButton";
+import { toast } from "react-toastify";
 
 const STATUS = {
   AGUARDANDO_COMITE: "AGUARDANDO_COMITE",
@@ -82,12 +83,10 @@ export default function Autorizacao() {
         params: { id_projeto },
       });
 
-      console.log(response.data)
-
       setAtividades(response.data);
     } catch (error) {
       console.error(error);
-      alert("Erro ao carregar solicitações");
+      toast.error("Erro ao carregar solicitações");
     } finally {
       setLoading(false);
     }

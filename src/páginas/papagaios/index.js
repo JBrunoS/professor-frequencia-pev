@@ -7,6 +7,7 @@ import api from '../../services/api'
 
 import './style.css'
 import BackButton from '../../components/backButton'
+import { toast } from 'react-toastify'
 
 var frequencia = []
 var participantes = []
@@ -74,7 +75,6 @@ export default function Papagaios() {
             frequencia.push(id)
         }
 
-        console.log(frequencia)
     }
 
     function resetFrequencia() {
@@ -107,14 +107,14 @@ export default function Papagaios() {
 
             await api.put('/saldo/participantes', data)
                 .then(response => {
-                    alert(response.data)
+                    toast.success("Papagaio cadastrado com sucesso!")
                     setEstado(false)
                     frequencia.length = 0
                     participantes.length = 0
                     navigate('/turma')
                 })
         } catch (error) {
-            console.log(error)
+            toast.error(error)
         }
     }
 

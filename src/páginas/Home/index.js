@@ -6,8 +6,10 @@ import {
   FiShoppingCart,
   FiUsers,
 } from "react-icons/fi";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { isAdmin } from "../../utils/roles";
+
+
 
 import "./style.css";
 
@@ -17,6 +19,7 @@ export default function Home() {
   const navigate = useNavigate();
   const funcao_professor = localStorage.getItem("funcao_professor") || "";
   const nome_professor = localStorage.getItem("nome_professor");
+
 
   function handleTurmas() {
     navigate("/turmas");
@@ -62,7 +65,7 @@ export default function Home() {
             <span>Participantes</span>
             <FiUsers size={18} color="#f18140" />
           </div>
-          
+
           <div onClick={handleEstoque}>
             <span>Registro de Consumo</span>
             <FiShoppingCart size={18} color="#f18140" />

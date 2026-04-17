@@ -12,6 +12,7 @@ import {
   FiDollarSign,
 } from "react-icons/fi";
 import { useNavigate, useLocation } from "react-router-dom";
+import { toast } from "react-toastify";
 
 import "./style.css";
 import user_image from "../../assets/user_image.png";
@@ -43,7 +44,7 @@ export default function Menu() {
       "nome_professor",
       "funcao_professor",
     ].forEach((item) => localStorage.removeItem(item));
-
+    toast.info("Usuário deslogado!")
     navigate("/login", { replace: true });
   }
 

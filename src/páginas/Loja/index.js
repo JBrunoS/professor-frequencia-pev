@@ -9,6 +9,7 @@ import api from '../../services/api'
 
 import './style.css'
 import BackButton from '../../components/backButton';
+import { toast } from 'react-toastify';
 
 export default function Papagaios() {
     const id_projeto = localStorage.getItem('id_projeto')
@@ -47,7 +48,7 @@ export default function Papagaios() {
                 await api.get(`/get/frequencia-aluno/${id_participante}/${month}/${year}`)
                     .then(response => {
                         setFrequencia(response.data)
-                        console.log(response.data)
+                    
                     })
             } catch (error) {
                 console.log(error)
@@ -71,18 +72,10 @@ export default function Papagaios() {
         }
     }
 
-
-    function handleBack() {
-
-
-        frequencia.length = 0
-        navigate('/')
-    }
-
     async function handleSalvar() {
 
         if(valor === '' || nome === ''){
-            alert("Preecher os campos acima para continuar.")
+            toast.error("Preecher os campos acima para continuar.")
             return
         }
 
@@ -97,7 +90,7 @@ export default function Papagaios() {
             
             await api.put('/desconta/papagaio', data)
                 .then(response => {
-                    alert(response.data)
+                    toast.success(response.data)
                     setEstado(false)
                     frequencia.length = 0
                     

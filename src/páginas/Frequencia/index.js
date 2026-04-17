@@ -7,6 +7,7 @@ import api from '../../services/api'
 
 import './style.css'
 import BackButton from '../../components/backButton'
+import { toast } from 'react-toastify'
 
 var frequencia = []
 var participantes = []
@@ -124,10 +125,9 @@ export default function Frequencia() {
             await api.post('/create/frequencia', data)
                 .then(response => {
                     if (response.status === 204) {
-                        alert('Já existe uma frequência para esse dia. Esperar uma nova data.')
+                        toast.error('Já existe uma frequência para esse dia. Esperar uma nova data.')
                     } else {
-                        alert(response.data)
-
+                        toast.success(response.data)
                     }
 
                     setEstado(false)

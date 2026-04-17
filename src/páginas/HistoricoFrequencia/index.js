@@ -64,10 +64,6 @@ export default function HistoricoFrequencia() {
 
         navigate('/listaPresenca')
     }
-
-    function handleBack() {
-        navigate('/turma')
-    }
     
     return (
         <>

@@ -6,6 +6,7 @@ import api from "../../services/api";
 import Menu from "../Menu";
 import "./style.css";
 import BackButton from "../../components/backButton";
+import { toast } from "react-toastify";
 
 export default function CriarSolicitacao() {
   const navigate = useNavigate();
@@ -129,11 +130,11 @@ export default function CriarSolicitacao() {
         nome_professor,
         criado_por_role,
       });
-
+      toast.success('Solicitação criada com sucesso!')
       navigate("/autorizacao");
     } catch (err) {
       console.error(err);
-      alert("Erro ao criar solicitação");
+      toast.error("Erro ao criar solicitação");
     }
   }
 

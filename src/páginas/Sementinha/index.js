@@ -6,6 +6,7 @@ import './style.css'
 import Menu from "../Menu";
 import api from "../../services/api";
 import BackButton from "../../components/backButton";
+import { toast } from "react-toastify";
 
 export default function Sementinha() {
 
@@ -72,7 +73,7 @@ export default function Sementinha() {
         try {
             await api.post('/create/frequencia/sementinha', data)
                 .then(response => {
-                    alert(response.data)
+                    toast.success(response.data)
                     setState(false)
 
                 })
