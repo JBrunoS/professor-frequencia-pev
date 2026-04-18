@@ -6,6 +6,8 @@ import Menu from '../Menu'
 import api from '../../services/api'
 
 import './style.css'
+import BackButton from '../../components/backButton'
+import { toast } from 'react-toastify'
 
 var frequencia = []
 var participantes = []
@@ -123,15 +125,12 @@ export default function Frequencia() {
             await api.post('/create/frequencia', data)
                 .then(response => {
                     if (response.status === 204) {
-                        alert('Já existe uma frequência para esse dia. Esperar uma nova data.')
+                        toast.error('Já existe uma frequência para esse dia. Esperar uma nova data.')
                     } else {
-                        alert(response.data)
-
+                        toast.success(response.data)
                     }
 
                     setEstado(false)
-
-
 
                     setObjetivo('')
                     setDescricao('')
@@ -152,11 +151,10 @@ export default function Frequencia() {
                 <div className={estado ? "frequencia-modal-load" : "frequencia-modal-loaded"}>
                     <FiLoader size={50} color='#f19864' />Aguarde...
                 </div>
-                <FiArrowLeft onClick={() => handleBack()} size={30} color='#000000' />
-                <span>{nome_turma + ' - ' + turno_turma}</span>
+                <BackButton to="/turma" label="Voltar para Turma" />
+                {/* <h2>Nova Frequência</h2> */}
+                <span>{nome_turma + ' - ' + turno_turma} <br /> Data: {day + '/' + month + '/' + year}</span>
 
-                <h2>Nova Frequência</h2>
-                <h3>Data: {day + '/' + month + '/' + year}</h3>
 
                 <div className='objetivo-frequencia'>
                     <label>Objetivo</label>
@@ -190,7 +188,7 @@ export default function Frequencia() {
 
 
 
-                <button type='button' onClick={() => handleSalvar()}>Salvar Frequência</button>
+                <button className='button' type='button' onClick={() => handleSalvar()}>Salvar Frequência</button>
             </div>
         </>
     )

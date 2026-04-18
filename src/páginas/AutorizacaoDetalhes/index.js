@@ -6,6 +6,8 @@ import Menu from "../Menu";
 import api from "../../services/api";
 import "./style.css";
 import BotaoBaixarPDF from "../../components/BotaoBaixarPDF";
+import BackButton from "../../components/backButton";
+import { toast } from "react-toastify";
 
 export default function DetalheSolicitacao() {
   const { id } = useParams();
@@ -96,12 +98,14 @@ export default function DetalheSolicitacao() {
         headers: { id_projeto },
       });
 
+      toast.success('Aprovado com sucesso!')
+
       setSolicitacao(res.data.solicitacao);
       setItens(res.data.itens);
       setTimeline(res.data.timeline);
     } catch (err) {
       console.error("Erro ao aprovar solicitação", err);
-      alert("Erro ao processar a solicitação");
+      toast.error("Erro ao processar a solicitação");
     }
   }
 
@@ -110,11 +114,12 @@ export default function DetalheSolicitacao() {
       <Menu />
 
       <div className="container-autorizacao">
+        <BackButton />
         {/* HEADER */}
         <div className="header-detalhe">
-          <button onClick={() => navigate(-1)}>
+          {/* <button onClick={() => navigate(-1)}>
             <FiArrowLeft size={25} />
-          </button>
+          </button> */}
           <h2>Detalhes da Solicitação</h2>
         </div>
 

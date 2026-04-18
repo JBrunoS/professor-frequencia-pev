@@ -8,6 +8,8 @@ import Menu from '../Menu'
 import api from '../../services/api'
 
 import './style.css'
+import BackButton from '../../components/backButton';
+import { toast } from 'react-toastify';
 
 export default function Papagaios() {
     const id_projeto = localStorage.getItem('id_projeto')
@@ -46,7 +48,7 @@ export default function Papagaios() {
                 await api.get(`/get/frequencia-aluno/${id_participante}/${month}/${year}`)
                     .then(response => {
                         setFrequencia(response.data)
-                        console.log(response.data)
+                    
                     })
             } catch (error) {
                 console.log(error)
@@ -70,18 +72,10 @@ export default function Papagaios() {
         }
     }
 
-
-    function handleBack() {
-
-
-        frequencia.length = 0
-        navigate('/')
-    }
-
     async function handleSalvar() {
 
-        if(valor == '' || nome == ''){
-            alert("Preecher os campos acima para continuar.")
+        if(valor === '' || nome === ''){
+            toast.error("Preecher os campos acima para continuar.")
             return
         }
 
@@ -96,7 +90,7 @@ export default function Papagaios() {
             
             await api.put('/desconta/papagaio', data)
                 .then(response => {
-                    alert(response.data)
+                    toast.success(response.data)
                     setEstado(false)
                     frequencia.length = 0
                     
@@ -124,7 +118,7 @@ export default function Papagaios() {
                     <FiLoader size={50} color='#f19864' />Aguarde...
                 </div>
                 
-                <FiArrowLeft onClick={() => handleBack()} size={30} color='#000000' />
+                <BackButton />
                 
                 <span>Loja do PEV</span>
 
@@ -148,13 +142,13 @@ export default function Papagaios() {
                 />
                 <span> {frequencia.length ? "Saldo Papagaios: " + frequencia[0].saldo : ''}</span>
 
-                <div>
+                <div className='valor-loja'>
                     <label>Valor Gasto</label>
                     <input type='number' value={valor} onChange={e => setValor(parseInt(e.target.value))} />
                 </div>
 
 
-                <button className='descontar' type='button' onClick={() => handleSalvar()}>Descontar <FiDollarSign size={30} color='#FFF' /></button>
+                <button className='descontar' type='button' onClick={() => handleSalvar()}>Descontar <FiDollarSign size={20} color='#FFF' /></button>
             </div>
         </>
     )

@@ -13,8 +13,8 @@
     .header-autorizacao {
         display: flex;
         align-items: center;
-        justify-content: space-between;
-        max-height: 45px;
+        justify-content: flex-start;
+        /* max-height: 45px; */
     }
 
     .container-autorizacao .header-autorizacao h2 {

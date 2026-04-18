@@ -4,7 +4,7 @@
 
 .container-menu {
   width: 100%;
-  height: 60px;
+  height: 70px;
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
@@ -12,28 +12,26 @@
   position: fixed;
   top: 0;
   left: 0;
-  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   z-index: 100;
   padding-left: 24px;
 }
 
-.container-menu img {
-  width: 42px;
-}
 
-.container-menu > div {
+
+.container-menu>div {
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: flex-start;
 }
 
-.container-menu > div:nth-child(1),
-.container-menu > div:nth-child(3) {
+.container-menu>div:nth-child(1),
+.container-menu>div:nth-child(3) {
   width: 20%;
 }
 
-.container-menu > div:nth-child(2) {
+.container-menu>div:nth-child(2) {
   width: 60%;
   justify-content: flex-start;
   color: #ffffff;
@@ -48,7 +46,7 @@
 .suspenso-menu,
 .suspenso-menu-off {
   position: fixed;
-  top: 60px;
+  top: 0px;
   left: 0;
   width: 260px;
   height: calc(100vh - 60px);
@@ -62,12 +60,20 @@
   overflow-y: auto;
 }
 
+.suspenso-menu,
+.suspenso-menu-off {
+  background: linear-gradient(180deg, #f19864, #e67e22);
+  box-shadow: 2px 0 4px rgba(0, 0, 0, 0.1);
+  border-top-right-radius: 16px;
+  border-bottom-right-radius: 16px;
+}
+
 .suspenso-menu {
   transform: translateX(0);
 }
 
 .suspenso-menu-off {
-  transform: translateX(-100%);
+  transform: translateX(-120%);
 }
 
 /* =========================================================
@@ -109,16 +115,72 @@
 ========================================================= */
 
 .menu-item.logout {
-  margin-top: 24px;
+  margin: 6px 0;
+}
+
+.section-profile{
+  width: 100%;
   border-top: 1px solid rgba(255, 255, 255, 0.3);
+  margin-top: 20px;
 }
 
 /* =========================================================
    RESPONSIVO (MOBILE)
 ========================================================= */
 
+.foto-editavel {
+  position: relative;
+  width: 50px;
+  min-width: 50px;
+  height: 50px;
+  min-height: 5px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.foto-editavel img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #ddd;
+  display: block;
+}
+
+.icone-editar {
+  position: absolute;
+  bottom: 6px;
+  right: 27px;
+  width: 22px;
+  height: 22px;
+  border: none;
+  border-radius: 50%;
+  background: #f5a171;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.35);
+  z-index: 98;
+  backdrop-filter: blur(2px);
+}
+
 @media only screen and (max-width: 768px) {
   .container-menu {
-    height: 60px;
+    height: 70px;
+    padding: 20px auto;
   }
 }

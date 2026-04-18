@@ -6,6 +6,7 @@ import './style.css'
 
 import Menu from '../Menu'
 import api from '../../services/api'
+import BackButton from '../../components/backButton'
 
 export default function Sorteio() {
     const [incidents, setIncidents] = useState([])
@@ -131,6 +132,7 @@ export default function Sorteio() {
         <>
             <Menu />
             <div className='container-sorteio'>
+                <BackButton to="/menu-sorteio" label="Voltar para Menu Anterior" />
                 <span>Sorteio: {sorteio} </span>
                 <span>Data: {dataSorteio} </span>
                 <div>

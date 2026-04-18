@@ -6,6 +6,8 @@ import Menu from '../Menu'
 import api from '../../services/api'
 
 import './style.css'
+import BackButton from '../../components/backButton'
+import { toast } from 'react-toastify'
 
 var frequencia = []
 var participantes = []
@@ -73,7 +75,6 @@ export default function Papagaios() {
             frequencia.push(id)
         }
 
-        console.log(frequencia)
     }
 
     function resetFrequencia() {
@@ -106,14 +107,14 @@ export default function Papagaios() {
 
             await api.put('/saldo/participantes', data)
                 .then(response => {
-                    alert(response.data)
+                    toast.success("Papagaio cadastrado com sucesso!")
                     setEstado(false)
                     frequencia.length = 0
                     participantes.length = 0
                     navigate('/turma')
                 })
         } catch (error) {
-            console.log(error)
+            toast.error(error)
         }
     }
 
@@ -124,11 +125,11 @@ export default function Papagaios() {
                 <div className={estado ? "papagaios-modal-load" : "papagaios-modal-loaded"}>
                     <FiLoader size={50} color='#f19864' />Aguarde...
                 </div>
-                <FiArrowLeft onClick={() => handleBack()} size={30} color='#000000' />
-                <span>{nome_turma + ' - ' + turno_turma}</span>
+                <BackButton to="/turma" label="Voltar para Turma" />
+                <span>{nome_turma + ' - ' + turno_turma} - <br /> Data: {day + '/' + month + '/' + year}</span>
 
                 <h2>Depositar papagaios</h2>
-                <h3>Data: {day + '/' + month + '/' + year}</h3>
+            
 
                 <select
                     value={valor}
@@ -155,7 +156,7 @@ export default function Papagaios() {
 
 
 
-                <button type='button' onClick={() => handleSalvar()}>Depositar <FiDollarSign size={30} color='#FFF' /></button>
+                <button className='button' type='button' onClick={() => handleSalvar()}>Depositar <FiDollarSign size={20} color='#FFF' /></button>
             </div>
         </>
     )

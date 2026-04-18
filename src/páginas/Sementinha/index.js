@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import './style.css'
 import Menu from "../Menu";
 import api from "../../services/api";
+import BackButton from "../../components/backButton";
+import { toast } from "react-toastify";
 
 export default function Sementinha() {
 
@@ -71,7 +73,7 @@ export default function Sementinha() {
         try {
             await api.post('/create/frequencia/sementinha', data)
                 .then(response => {
-                    alert(response.data)
+                    toast.success(response.data)
                     setState(false)
 
                 })
@@ -89,9 +91,7 @@ export default function Sementinha() {
                 <div className={state ? "modal-load" : "modal-loaded"}>
                     <FiLoader size={50} color='#f19864' />Aguarde...
                 </div>
-                <span onClick={() => handleBack()}>
-                    <FiArrowLeft size={30} color='#000000' />
-                </span>
+                <BackButton to="/" label="Voltar para Home" />
                 <h2>Nova Frequência</h2>
                 <span>{nome_turma} - {turno_turma}</span>
 

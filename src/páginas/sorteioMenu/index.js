@@ -7,6 +7,7 @@ import './style.css'
 
 import Menu from '../Menu'
 import api from '../../services/api'
+import BackButton from '../../components/backButton';
 
 export default function SorteioMenu() {
     const id_projeto = localStorage.getItem('id_projeto')
@@ -193,7 +194,8 @@ export default function SorteioMenu() {
         <>
             <Menu />
             <div className='container-menu-sorteio'>
-                <button onClick={() => navigate('/sorteio')}>Vender</button>
+                <BackButton to="/" label="Voltar para Home" />
+                <button className='button' onClick={() => navigate('/sorteio')}>Vender</button>
                 {funcao_professor === 'Diretor(a)' && <button onClick={() => showPontos()} style={{ backgroundColor: '#c2c2c2', color: '#000000', margin: '5px auto 0px' }} >Ver Vendas Equipe</button>}
                 {funcao_professor === 'Coordenador(a)' && <button onClick={() => showPontos()} style={{ backgroundColor: '#c2c2c2', color: '#000000', margin: '5px auto 0px' }} >Ver Vendas Equipe</button>}
 

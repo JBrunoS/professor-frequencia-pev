@@ -6,26 +6,27 @@
         flex-direction: column;
         align-items: flex-start;
         justify-content: center;
-        margin: 70px auto 10px;
-        padding: 0px 20px;
+        margin: 80px auto 10px;
+        padding: 16px 16px 65px;
     }
 
     .container-papagaios select{
         width: 100%;
-        height: 50px;
+        height: 40px;
         padding: 10px;
-        font-size: 18px;
+        font-size: 14px;
         margin: 15px 0px;
+        border-radius: 8px;
     }
 
     .container-papagaios>span {
         margin: 20px 0px;
-        font-size: 20px;
+        font-size: 18px;
         text-transform: capitalize;
     }
 
-    .container-papagaios h3 {
-        font-size: 22px;
+    .container-papagaios h2, h3 {
+        font-size: 20px;
         margin-bottom: 10px;
     }
 
@@ -40,29 +41,30 @@
     }
 
     .container-papagaios div span {
-        font-size: 22px;
+        font-size: 18px;
     }
 
     .container-papagaios div input {
-        width: 50px;
-        height: 30px;
+        width: 40px;
+        height: 20px;
     }
 
-    .container-papagaios button {
+    .container-papagaios .button {
         width: 100%;
         height: 40px;
         margin: 30px auto 30px;
         border: none;
         background-color: #773ed4;
-        font-size: 20px;
+        font-size: 16px;
         color: #FFFFFF;
         display: flex;
         align-items: center;
         justify-content: center;
+        border-radius: 8px;
         
     }
 
-    .container-papagaios button:hover {
+    .container-papagaios .button:hover {
         background-color: #7441c7dc;
     }
 
