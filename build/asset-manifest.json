@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/static/css/main.98be653a.css",
+    "main.js": "/static/js/main.f921f314.js",
+    "static/media/logo-pev.png": "/static/media/logo-pev.160adeadb31331efa29c.png",
+    "index.html": "/index.html",
+    "main.98be653a.css.map": "/static/css/main.98be653a.css.map",
+    "main.f921f314.js.map": "/static/js/main.f921f314.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.98be653a.css",
+    "static/js/main.f921f314.js"
+  ]
+}
