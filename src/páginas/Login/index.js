@@ -43,7 +43,7 @@ export default function Login() {
       localStorage.setItem("id_professor", user.id);
       localStorage.setItem("id_projeto", user.id_projeto);
       localStorage.setItem("nome_professor", user.nome);
-      localStorage.setItem("funcao_professor", user.funcao);
+      localStorage.setItem("vinculo_professor", JSON.stringify(user.vinculos));
       localStorage.setItem("image_url", user.image_url);
 
       toast.success(`Seja bem-vindo, ${user.nome}`)

@@ -16,11 +16,21 @@ import Menu from "../Menu";
 
 export default function Home() {
   const navigate = useNavigate();
-  const funcao_professor = localStorage.getItem("funcao_professor") || "";
+  const vinculos = JSON.parse(localStorage.getItem("vinculo_professor") || "[]");
   const nome_professor = localStorage.getItem("nome_professor");
   const id_professor = localStorage.getItem("id_professor");
 
   const [projetos, setProjetos] = useState([]);
+
+  const idProjetoAtual = Number(
+    localStorage.getItem("id_projeto")
+  );
+
+  const vinculoAtual = vinculos.find(
+    (v) => v.id_projeto === idProjetoAtual
+  );
+
+  const funcao_professor = vinculoAtual?.funcao || "";
 
   useEffect(() => {
     buscarProjetos();
@@ -66,11 +76,10 @@ export default function Home() {
               {projetos.map((p) => (
                 <div
                   key={p.id}
-                  className={`projeto-card ${
-                    Number(localStorage.getItem("id_projeto")) === p.id
+                  className={`projeto-card ${Number(localStorage.getItem("id_projeto")) === p.id
                       ? "ativo"
                       : ""
-                  }`}
+                    }`}
                   onClick={() => trocarProjeto(p)}
                 >
                   <span>{p.nome_projeto}</span>
