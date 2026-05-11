@@ -10,6 +10,12 @@
         gap: 16px;
     }
 
+    .header-autorizacao {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
     .container-autorizacao h2 {
         font-size: 22px;
         margin-bottom: 10px;

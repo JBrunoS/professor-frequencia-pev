@@ -45,17 +45,22 @@ export default function Login() {
       localStorage.setItem("nome_professor", user.nome);
       localStorage.setItem("funcao_professor", user.funcao);
       localStorage.setItem("image_url", user.image_url);
+
       toast.success(`Seja bem-vindo, ${user.nome}`)
+      
       navigate("/");
     } catch (error) {
       const err = error.response?.data?.error;
 
       if (err === "EMAIL_INVALIDO") {
         setErrors({ email: "Email inválido ou não encontrado", senha: "" });
+        toast.error("Email inválido ou não encontrado")
       } else if (err === "SENHA_INVALIDA") {
         setErrors({ email: "", senha: "Senha inválida ou incorreta" });
+        toast.error("Senha inválida ou incorreta")
       } else {
         setErrors({ email: "", senha: "Erro ao fazer login" });
+        toast.error("Erro ao fazer login")
       }
     } finally {
       setLoading(false);

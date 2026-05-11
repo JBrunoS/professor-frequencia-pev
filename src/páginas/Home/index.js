@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import {
   FiCalendar,
   FiDollarSign,
@@ -6,39 +7,48 @@ import {
   FiShoppingCart,
   FiUsers,
 } from "react-icons/fi";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { isAdmin } from "../../utils/roles";
-
-
+import api from "../../services/api";
 
 import "./style.css";
-
 import Menu from "../Menu";
 
 export default function Home() {
   const navigate = useNavigate();
   const funcao_professor = localStorage.getItem("funcao_professor") || "";
   const nome_professor = localStorage.getItem("nome_professor");
+  const id_professor = localStorage.getItem("id_professor");
 
+  const [projetos, setProjetos] = useState([]);
 
-  function handleTurmas() {
-    navigate("/turmas");
+  useEffect(() => {
+    buscarProjetos();
+  }, []);
+
+  async function buscarProjetos() {
+    try {
+      const res = await api.get(`/professor/${id_professor}/projetos`);
+      if (res.data.length > 1) {
+        setProjetos(res.data);
+      }
+    } catch (error) {
+      console.log(error);
+    }
   }
-  function handleEstoque() {
-    navigate("/estoque");
+
+  function trocarProjeto(projeto) {
+    localStorage.setItem("id_projeto", projeto.id);
+    localStorage.setItem("nome_projeto", projeto.nome_projeto);
+    window.location.reload();
   }
-  function handleParticipantes() {
-    navigate("/participantes");
-  }
-  function handleSorteio() {
-    navigate("/menu-sorteio");
-  }
-  function handleAutorizacao() {
-    navigate("/autorizacao");
-  }
-  function handlePapagaios() {
-    navigate("/loja");
-  }
+
+  function handleTurmas() { navigate("/turmas"); }
+  function handleEstoque() { navigate("/estoque"); }
+  function handleParticipantes() { navigate("/participantes"); }
+  function handleSorteio() { navigate("/menu-sorteio"); }
+  function handleAutorizacao() { navigate("/autorizacao"); }
+  function handlePapagaios() { navigate("/loja"); }
 
   return (
     <>
@@ -48,6 +58,29 @@ export default function Home() {
           Seja Bem-vindo, {nome_professor}
         </span>
 
+        {/* ── SELETOR DE PROJETO ── */}
+        {projetos.length > 1 && (
+          <div className="projetos-container">
+            <p>Selecione o projeto:</p>
+            <div className="projetos-grid">
+              {projetos.map((p) => (
+                <div
+                  key={p.id}
+                  className={`projeto-card ${
+                    Number(localStorage.getItem("id_projeto")) === p.id
+                      ? "ativo"
+                      : ""
+                  }`}
+                  onClick={() => trocarProjeto(p)}
+                >
+                  <span>{p.nome_projeto}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* ── MENU ── */}
         <div className="menu-grid">
           {isAdmin(funcao_professor) && (
             <div onClick={handleAutorizacao}>

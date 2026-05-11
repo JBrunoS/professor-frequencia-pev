@@ -73,7 +73,7 @@ export default function Autorizacao() {
 
   useEffect(() => {
     carregarSolicitacoes();
-  }, []);
+  }, [id_projeto]);
 
   async function carregarSolicitacoes() {
     try {

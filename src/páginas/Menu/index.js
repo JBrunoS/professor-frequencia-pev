@@ -44,7 +44,7 @@ export default function Menu() {
       "nome_professor",
       "funcao_professor",
     ].forEach((item) => localStorage.removeItem(item));
-    toast.info("Usuário deslogado!")
+    toast.info("Usuário deslogado!");
     navigate("/login", { replace: true });
   }
 
@@ -64,7 +64,7 @@ export default function Menu() {
 
       <div className="foto-editavel">
         <img
-          src={image_url === null ? user_image : image_url}
+          src={!image_url || image_url === "null" ? user_image : image_url}
           alt="Perfil de usuário"
         />
         {/* <button className="icone-editar">
@@ -85,9 +85,10 @@ export default function Menu() {
           Home
         </span>
         {isAdmin(funcao_professor) && (
-
           <span
-            className={isActive("/autorizacao") ? "menu-item active" : "menu-item"}
+            className={
+              isActive("/autorizacao") ? "menu-item active" : "menu-item"
+            }
             onClick={() => goTo("/autorizacao")}
           >
             <FiLock size={20} />
@@ -104,13 +105,14 @@ export default function Menu() {
         </span>
 
         <span
-          className={isActive("/participantes") ? "menu-item active" : "menu-item"}
+          className={
+            isActive("/participantes") ? "menu-item active" : "menu-item"
+          }
           onClick={() => goTo("/participantes")}
         >
           <FiUser size={20} />
           Participantes
         </span>
-
 
         <span
           className={isActive("/estoque") ? "menu-item active" : "menu-item"}
@@ -128,7 +130,10 @@ export default function Menu() {
           Loja Papagaio
         </span>
         <div className="section-profile">
-          <span className="menu-item logout" onClick={() => alert('Funcionalidade em desenvolvimento')}>
+          <span
+            className="menu-item logout"
+            onClick={() => toast.info("Funcionalidade em desenvolvimento")}
+          >
             <FiEdit2 size={20} />
             Alterar senha
           </span>
