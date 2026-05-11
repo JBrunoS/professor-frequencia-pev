@@ -19,3 +19,18 @@ body {
     background-color: var(--backgroun);
     -webkit-font-smoothing: antialiased;
 }
+
+/* Container no topo */
+.Toastify__toast-container--top-right {
+  top: 20px;          /* desce do topo */
+  right: 16px;
+  left: auto;
+  width: auto;        /* remove 100% */
+  max-width: 320px;   /* limita largura */
+}
+
+/* O toast em si */
+.Toastify__toast {
+  border-radius: 12px;
+  width: auto;
+}

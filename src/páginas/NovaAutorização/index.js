@@ -24,6 +24,7 @@ export default function CriarSolicitacao() {
   const [dataPrazo, setDataPrazo] = useState("");
   const [localCompra, setLocalCompra] = useState("");
   const [custo, setCusto] = useState(0);
+  const [totalSolicitado, setTotalSolicitado] = useState(0);
 
   // 👉 ITEM EM EDIÇÃO
   const [itemAtual, setItemAtual] = useState({
@@ -62,6 +63,34 @@ export default function CriarSolicitacao() {
       setAtividades(atividadesFiltradas);
     } catch (error) {
       console.log(error);
+    }
+  }
+
+  // busca o saldo sempre que mudar a atividade
+  async function handleSelectAtividade(e) {
+    const id = e.target.value;
+    setAtividadeId(id);
+
+    const atividadeSelecionada = atividades.find(
+      (item) => item.id === Number(id),
+    );
+
+    if (atividadeSelecionada) {
+      setCusto(atividadeSelecionada.custo);
+
+      try {
+        console.log(
+          "URL chamada:",
+          `/atividades/saldo/${id}?id_projeto=${id_projeto}`,
+        );
+        const res = await api.get(
+          `/atividades/saldo/${id}?id_projeto=${id_projeto}`,
+        );
+        setTotalSolicitado(res.data.total_solicitado);
+      } catch (err) {
+        console.error(err);
+        setTotalSolicitado(0);
+      }
     }
   }
 
@@ -130,26 +159,11 @@ export default function CriarSolicitacao() {
         nome_professor,
         criado_por_role,
       });
-      toast.success('Solicitação criada com sucesso!')
+      toast.success("Solicitação criada com sucesso!");
       navigate("/autorizacao");
     } catch (err) {
       console.error(err);
       toast.error("Erro ao criar solicitação");
-    }
-  }
-
-  function handleSelectAtividade(e) {
-    const id = e.target.value;
-    setAtividadeId(id);
-
-    const atividadeSelecionada = atividades.find(
-      (item) => item.id === Number(id),
-    );
-
-    if (atividadeSelecionada) {
-      setCusto(atividadeSelecionada.custo);
-      // ou atualizar um objeto form completo
-      // setForm(atividadeSelecionada);
     }
   }
 
@@ -281,16 +295,29 @@ export default function CriarSolicitacao() {
           {/* ===== TOTAL ===== */}
           <div className="card total-card">
             <div>
-              <strong>Valor Total: </strong>
+              <strong>Valor desta solicitação: </strong>
               <span>R$ {valorTotal.toFixed(2)}</span>
             </div>
             <div>
-              <strong>Custo Total da Atividade: </strong>
+              <strong>Custo total da atividade: </strong>
               <span>R$ {custo.toFixed(2)}</span>
             </div>
             <div>
-              <strong>Valor Restante da Atividade: </strong>
-              <span>R$ {(custo - valorTotal).toFixed(2)}</span>
+              <strong>Já solicitado: </strong>
+              <span>R$ {totalSolicitado.toFixed(2)}</span>
+            </div>
+            <div>
+              <strong>Saldo restante: </strong>
+              <span
+                style={{
+                  color:
+                    custo - totalSolicitado - valorTotal < 0
+                      ? "red"
+                      : "inherit",
+                }}
+              >
+                R$ {(custo - totalSolicitado - valorTotal).toFixed(2)}
+              </span>
             </div>
           </div>
 
