@@ -6,7 +6,7 @@ import {
   FiShoppingCart,
   FiUsers,
 } from "react-icons/fi";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { isAdmin } from "../../utils/roles";
 
 
