@@ -12,7 +12,11 @@ export default function CriarSolicitacao() {
   const navigate = useNavigate();
   const id_projeto = localStorage.getItem("id_projeto");
   const id_user = localStorage.getItem("id_professor");
-  const criado_por_role = localStorage.getItem("funcao_professor");
+  const vinculos = JSON.parse(localStorage.getItem("vinculo_professor") || "[]");
+  const vinculoAtual = vinculos.find(
+    (v) => v.id_projeto === Number(id_projeto)
+  );
+  const criado_por_role = vinculoAtual?.funcao || "";
   const nome_professor = localStorage.getItem("nome_professor");
   const year = new Date().getFullYear();
   const month = new Date().getMonth() + 1;

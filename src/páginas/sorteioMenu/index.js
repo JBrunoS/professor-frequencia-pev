@@ -13,7 +13,11 @@ export default function SorteioMenu() {
     const id_projeto = localStorage.getItem('id_projeto')
     const id_professor = localStorage.getItem('id_professor')
     const nome_professor = localStorage.getItem('nome_professor')
-    const funcao_professor = localStorage.getItem('funcao_professor')
+    const vinculos = JSON.parse(localStorage.getItem('vinculo_professor') || '[]')
+    const vinculoAtual = vinculos.find(
+        (v) => v.id_projeto === Number(id_projeto)
+    )
+    const funcao_professor = vinculoAtual?.funcao || ''
     const [sorteio, setSorteio] = useState('2 bicicletas e 1 iPhone 8 sem carregador')
     const [vendidosColaborador, setVendidosColaborador] = useState(0)
     const [incidents, setIncidents] = useState([])

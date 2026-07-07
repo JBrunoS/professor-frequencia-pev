@@ -12,12 +12,17 @@ import { toast } from "react-toastify";
 export default function DetalheSolicitacao() {
   const { id } = useParams();
 
-  const role = localStorage.getItem("funcao_professor");
+  const vinculos = JSON.parse(localStorage.getItem("vinculo_professor") || "[]");
   const id_projeto = localStorage.getItem("id_projeto");
+  const vinculoAtual = vinculos.find(
+    (v) => v.id_projeto === Number(id_projeto)
+  );
+  const role = vinculoAtual?.funcao || "";
 
   const [solicitacao, setSolicitacao] = useState(null);
   const [itens, setItens] = useState([]);
   const [timeline, setTimeline] = useState([]);
+
 
   useEffect(() => {
     async function carregarDados() {

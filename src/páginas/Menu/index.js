@@ -23,7 +23,12 @@ export default function Menu() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const funcao_professor = localStorage.getItem("funcao_professor") || "";
+  const vinculos = JSON.parse(localStorage.getItem("vinculo_professor") || "[]");
+  const id_projeto = localStorage.getItem("id_projeto");
+  const vinculoAtual = vinculos.find(
+    (v) => v.id_projeto === Number(id_projeto)
+  );
+  const funcao_professor = vinculoAtual?.funcao || "";
   const image_url = localStorage.getItem("image_url");
 
   function toggleMenu() {
@@ -42,7 +47,8 @@ export default function Menu() {
       "id_projeto",
       "turno_turma",
       "nome_professor",
-      "funcao_professor",
+      "vinculo_professor",
+      "image_url",
     ].forEach((item) => localStorage.removeItem(item));
     toast.info("Usuário deslogado!");
     navigate("/login", { replace: true });
